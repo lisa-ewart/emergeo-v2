@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Button } from 'native-base';
 
 import Auth from '../firebase/auth';
+import Home from './home';
 
 export default class App extends React.Component {
 
@@ -10,7 +11,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <Auth {...this.props}/>
+        <Home {...this.props}/>
     );
   }
 }
