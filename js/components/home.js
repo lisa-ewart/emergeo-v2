@@ -7,6 +7,9 @@ import {
     Image,
     // BackgroundImage
 } from 'react-native';
+import {Drawer, Icon, Button} from 'native-base';
+
+import SideBar from './sidebar';
 
 
 class BackgroundImage extends Component {
@@ -19,28 +22,64 @@ class BackgroundImage extends Component {
         )
     }
 }
-
 export default class Home extends Component{
+
+  closeDrawer = () => {
+      this.drawer._root.close()
+    };
+    openDrawer = () => {
+      this.drawer._root.open()
+       };
 
     render(){
         return(
-             <View style={styles.container}>
-        <BackgroundImage>
-              <Text style={styles.text}>Emergeo</Text>
-              <Image source={require('../../assets/images/emergeologo.png')} style={{height: 100,
-                 width: 100, }}>
-            </Image>
-              <Text style={styles.text2}>Find Service Providers nearby based on their realtime geolocation.</Text>
+<Drawer
+        ref={(ref) => { this.drawer = ref; }}
+        content={<SideBar navigator={this.navigator}{...this.props}/>}
+        onClose={() => this.closeDrawer()} >
 
-            </BackgroundImage>
-        
+        <TouchableHighlight style={styles.drawerbtn}  onPress={()=> this.openDrawer()}>
+         <Icon name= "home"/>
+          </TouchableHighlight>
+        <View style={styles.container}>
+
+
+            <BackgroundImage>
+            
+
+                <Text style={styles.text}>Emergeo</Text>
+                   <Image source={require('../../assets/images/emergeologo.png')} style={{height: 100,
+                    width: 100, backgroundColor: 'rgba(0,0,0,0.5)', }}>
+                   </Image>
+                <Text style={styles.text2}>Have an account? Login here.</Text>
+                <TouchableHighlight
+                    style={styles.btn}
+                    onPress={() => { alert('Get Started!') }}>
+                    <Text style={styles.btnText}>Get Started!</Text>
+                </TouchableHighlight>
+            </BackgroundImage>     
       </View>
+      </Drawer>
         )
     }
 }
 
 
 const styles = StyleSheet.create({
+    
+    btn:{
+        marginRight:40,
+        marginLeft:40,
+        marginTop:10,
+        paddingTop:20,
+        paddingBottom:20,
+        paddingLeft:10,
+        paddingRight:10,
+        borderWidth:1,
+        borderColor:'#fff',
+        borderRadius: 10,
+        backgroundColor:'#9DBFC8',
+    },
     container: {
         flex: 1,
         paddingTop: 20,
@@ -61,8 +100,9 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         color: 'white',
-        backgroundColor: 'rgba(0,0,0,0)',
-        fontSize: 25
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        fontSize: 35,
+        fontWeight: 'bold',
     },
     text2: {
         textAlign: 'center',
@@ -71,6 +111,9 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
         fontSize: 17,
+    },
+    btnText:{
+        color:'white',
     },
     logo: {
 
