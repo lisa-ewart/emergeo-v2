@@ -4,6 +4,8 @@ import { Container, Header, Content, Form, Item, Input, Label, Button } from 'na
 
 import Auth from '../firebase/auth';
 import Home from './home';
+import SignIn from './signin';
+import DrawerExample from './drawer';
 
 export default class App extends React.Component {
 
@@ -11,7 +13,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <Home {...this.props}/>
+        <Home/>   
     );
   }
 }
