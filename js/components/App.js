@@ -1,19 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Button } from 'native-base';
-
 import Auth from '../firebase/auth';
 import Home from './home';
-import SignIn from './signin';
 import DrawerExample from './drawer';
+import {
+  StackNavigator,
+} from 'react-navigation';
+
+
+const screens = StackNavigator({
+  Welcome: { screen: Home },
+  SignIn: { screen: Auth },
+});
+
 
 export default class App extends React.Component {
-
-
+    static navigationOptions = {
+    title: 'Welcome',
+  };
 
   render() {
+     const { navigate } = navigation.navigate;
     return (
-        <Home/>   
+        <Welcome {...this.props}/>   
     );
   }
 }

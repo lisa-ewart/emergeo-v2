@@ -1,7 +1,7 @@
 import Firebase from 'firebase';
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Label, Button } from 'native-base';
+import { Container, Header, Content, Form, Item, Input, Label, Button, Card, } from 'native-base';
 
 
 const config = {
@@ -42,6 +42,7 @@ export default class Auth extends Component{
             <Container>
                 <Header />
                 <Content>
+                <Card style={styles.card}>
                     <Form>
                         <Item stackedLabel>
                             <Label>Email</Label>
@@ -51,10 +52,11 @@ export default class Auth extends Component{
                             <Label>Password</Label>
                             <Input onChangeText={(text)=>this.handleUserPassword(text)} />
                         </Item>
-                        <Button block onPress={()=> this.createUser()}>
-                            <Text>Sign In</Text>
+                        <Button style={styles.signin} block onPress={()=> this.createUser()}>
+                            <Text style={styles.btntext}>Sign In</Text>
                         </Button>
                     </Form>
+                    </Card>
                 </Content>
             </Container>
         )
@@ -120,4 +122,21 @@ export function toggleSignIn(){
         })
      }
 }
+
+const styles = StyleSheet.create({
+
+    card: {
+        borderRadius: 5,
+        borderColor:'black',
+        margin:250,
+       backgroundColor:'#9DBFC8',
+        marginTop: 5,
+    },
+    signin:{
+        backgroundColor:'black',
+    },
+    btntext:{
+        color:'white',
+    },
+});
 
