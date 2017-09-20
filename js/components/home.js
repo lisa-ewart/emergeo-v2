@@ -9,7 +9,11 @@ import {
 } from 'react-native';
 import {Drawer, Icon, Button} from 'native-base';
 
+
+
 import SideBar from './sidebar';
+import Auth from '../firebase/auth';
+
 
 
 class BackgroundImage extends Component {
@@ -24,6 +28,9 @@ class BackgroundImage extends Component {
 }
 export default class Home extends Component{
 
+
+
+
   closeDrawer = () => {
       this.drawer._root.close()
     };
@@ -32,6 +39,7 @@ export default class Home extends Component{
        };
 
     render(){
+       
         return(
 <Drawer
         ref={(ref) => { this.drawer = ref; }}
@@ -54,7 +62,7 @@ export default class Home extends Component{
                 <Text style={styles.text2}>Have an account? Login here.</Text>
                 <TouchableHighlight
                     style={styles.btn}
-                    onPress={() => { alert('Get Started!') }}>
+                    onPress={() => navigate('SignIn')}>
                     <Text style={styles.btnText}>Get Started!</Text>
                 </TouchableHighlight>
             </BackgroundImage>     

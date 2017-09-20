@@ -17,12 +17,7 @@ export default class SignIn extends Component{
         const resizeMode = 'contain';
 
         return(
-            <View style={{
-                padding: 50,
-                backgroundColor: 'none',
-
-
-            }}>
+            <View>
 
 
                 <TextInput
