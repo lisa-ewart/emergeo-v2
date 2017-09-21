@@ -1,5 +1,6 @@
 import {
-    createNewUser
+    createNewUser,
+    switchView
 } from './reducers';
 
 
@@ -9,5 +10,6 @@ import {
 
 export const actions ={
     'CREATE_USER': (...args) => createNewUser(...args),
+    'SWITCH_VIEW': (...args) => switchView(...args),
 }
 

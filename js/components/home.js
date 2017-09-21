@@ -11,6 +11,7 @@ import {Drawer, Icon, Button} from 'native-base';
 
 
 
+
 import SideBar from './sidebar';
 import Auth from '../firebase/auth';
 
@@ -26,22 +27,24 @@ class BackgroundImage extends Component {
         )
     }
 }
-export default class Home extends Component{
-
-
-
-
-  closeDrawer = () => {
-      this.drawer._root.close()
+export default class HomeScreen extends Component{
+    
+    closeDrawer = () => {
+        this.drawer._root.close()
     };
     openDrawer = () => {
-      this.drawer._root.open()
-       };
+        this.drawer._root.open()
+    };
 
-    render(){
-       
+    changeView(){
+        this.props.dispatch('SWITCH_VIEW',{
+            viewNumber: 2
+        })
+    }
+    
+    render(){      
         return(
-<Drawer
+            <Drawer
         ref={(ref) => { this.drawer = ref; }}
         content={<SideBar navigator={this.navigator}{...this.props}/>}
         onClose={() => this.closeDrawer()} >
@@ -62,7 +65,7 @@ export default class Home extends Component{
                 <Text style={styles.text2}>Have an account? Login here.</Text>
                 <TouchableHighlight
                     style={styles.btn}
-                    onPress={() => navigate('SignIn')}>
+                    onPress={() => this.changeView()}>
                     <Text style={styles.btnText}>Get Started!</Text>
                 </TouchableHighlight>
             </BackgroundImage>     
@@ -71,7 +74,6 @@ export default class Home extends Component{
         )
     }
 }
-
 
 const styles = StyleSheet.create({
     
