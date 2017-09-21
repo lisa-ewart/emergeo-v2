@@ -4,26 +4,26 @@ import { Container, Header, Content, Form, Item, Input, Label, Button } from 'na
 import Auth from '../firebase/auth';
 import Home from './home';
 import DrawerExample from './drawer';
-import {
-  StackNavigator,
-} from 'react-navigation';
 
 
-const screens = StackNavigator({
-  Welcome: { screen: Home },
-  SignIn: { screen: Auth },
-});
+import {ViewNames} from '../flux/store';
 
 
 export default class App extends React.Component {
-    static navigationOptions = {
-    title: 'Welcome',
-  };
+    // state = Store
 
   render() {
-     const { navigate } = navigation.navigate;
+     switch(this.props.currentView){
+       case ViewNames.HOME:
+        return <Home {...this.props}/>
+      case ViewNames.SIGN_IN:
+        return <Auth {...this.props}/>
+      default:
+        return <Home {...this.props}/>
+
+     }
     return (
-        <Welcome {...this.props}/>   
+        this.props.currentView
     );
   }
 }
