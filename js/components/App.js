@@ -7,25 +7,18 @@ import DrawerExample from './drawer';
 import {
   StackNavigator,
 } from 'react-navigation';
+import Profile from './profile';
 
 
-const screens = StackNavigator({
-  Welcome: { screen: Home },
-  SignIn: { screen: Auth },
-});
+
 
 
 export default class App extends React.Component {
-    static navigationOptions = {
-    title: 'Welcome',
-  };
-
-  render() {
-     const { navigate } = navigation.navigate;
-    return (
-        <Welcome {...this.props}/>   
-    );
-  }
+    render(){    
+        return(
+          <Home />
+        )
+    }
 }
 
 const styles = StyleSheet.create({

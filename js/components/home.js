@@ -7,10 +7,8 @@ import {
     Image,
     // BackgroundImage
 } from 'react-native';
-import {Drawer, Icon, Button} from 'native-base';
-
-
-
+import {Drawer, Icon, Button,} from 'native-base';
+import { StackNavigator } from 'react-navigation';
 import SideBar from './sidebar';
 import Auth from '../firebase/auth';
 
@@ -28,7 +26,9 @@ class BackgroundImage extends Component {
 }
 export default class Home extends Component{
 
-
+static navigationOptions = {
+    title: 'Emergeo',
+  };
 
 
   closeDrawer = () => {
@@ -41,20 +41,16 @@ export default class Home extends Component{
     render(){
        
         return(
-<Drawer
+      <Drawer
         ref={(ref) => { this.drawer = ref; }}
         content={<SideBar navigator={this.navigator}{...this.props}/>}
         onClose={() => this.closeDrawer()} >
 
-        <TouchableHighlight style={styles.drawerbtn}  onPress={()=> this.openDrawer()}>
-         <Icon name= "home"/>
+        <TouchableHighlight style={styles.menu}  onPress={()=> this.openDrawer()}>
+         <Icon name= "menu"/>
           </TouchableHighlight>
         <View style={styles.container}>
-
-
             <BackgroundImage>
-            
-
                 <Text style={styles.text}>Emergeo</Text>
                    <Image source={require('../../assets/images/emergeologo.png')} style={{height: 100,
                     width: 100, backgroundColor: 'rgba(0,0,0,0.5)', }}>
@@ -62,7 +58,8 @@ export default class Home extends Component{
                 <Text style={styles.text2}>Have an account? Login here.</Text>
                 <TouchableHighlight
                     style={styles.btn}
-                    onPress={() => navigate('SignIn')}>
+                    
+                    onPress={() => navigate('Sign')}>
                     <Text style={styles.btnText}>Get Started!</Text>
                 </TouchableHighlight>
             </BackgroundImage>     
@@ -71,6 +68,14 @@ export default class Home extends Component{
         )
     }
 }
+
+
+
+
+
+
+
+
 
 
 const styles = StyleSheet.create({
@@ -126,4 +131,8 @@ const styles = StyleSheet.create({
     logo: {
 
     },
+    menu:{
+        marginLeft: 25,
+        marginTop: 25,
+    }
 });
