@@ -4,6 +4,7 @@ import { Container, Header, Content, Form, Item, Input, Label, Button } from 'na
 import Auth from '../firebase/auth';
 import Home from './deleteme';
 import DrawerExample from './drawer';
+
 import {
   StackNavigator,
 } from 'react-navigation';
@@ -19,6 +20,7 @@ export default class App extends React.Component {
           <Home />
         )
     }
+
 }
 
 const styles = StyleSheet.create({
