@@ -18,8 +18,18 @@ class SideBar extends React.Component {
     title: 'Emergeo',
   };
 
+
+
   render() {
+
     const { navigate } = this.props.navigation;
+    const SimpleApp = StackNavigator({
+  // Home: { screen: SideBar }, 
+  Sign: { screen: Auth },
+  Prof: { screen: Profile},
+  Map: { screen: MapSearch},
+})
+    
     return (
       <View>
         <Text style={styles.btntext}>Get the screens out of the drawer!</Text>
@@ -105,13 +115,6 @@ class SignOut extends React.Component {
 
 
 
-const SimpleApp = StackNavigator({
-  Home: { screen: SideBar }, 
-  Sign: { screen: Auth },
-  Prof: { screen: Profile},
-  Map: { screen: MapSearch},
-});
-export default SimpleApp;
 
 
 

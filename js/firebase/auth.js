@@ -43,7 +43,7 @@ export default class Auth extends Component{
     render(){
         return(
             <Container>
-                <Header />
+                
                 <Content>
                 <Card style={styles.card}>
                     <Form>

@@ -14,6 +14,9 @@ import { StackNavigator } from 'react-navigation';
 
 import SideBar from './sidebar';
 import Auth from '../firebase/auth';
+import Profile from './profile';
+import MapSearch from './map';
+
 
 
 
@@ -28,41 +31,16 @@ class BackgroundImage extends Component {
     }
 }
 
-export default class Home extends Component{
-
-static navigationOptions = {
-    title: 'Emergeo',
-  };
 
 
-  closeDrawer = () => {
-      this.drawer._root.close()
-    };
-    openDrawer = () => {
-        this.drawer._root.open()
-    };
+class Home extends Component{
+// static navigationOptions = {
+//     title: '',
+//   };
 
-    changeView(){
-        this.props.dispatch('SWITCH_VIEW',{
-            viewNumber: 2
-        })
-    }
-    
-    render(){      
+    render(){
+        const { navigate } = this.props.navigation;    
         return(
-      <Drawer
-
-
-        ref={(ref) => { this.drawer = ref; }}
-        content={<SideBar navigator={this.navigator}{...this.props}/>}
-        
-        onClose={() => this.closeDrawer()} >
-    
-
-        <TouchableHighlight style={styles.menu}  onPress={()=> this.openDrawer()}>
-         <Icon name= "menu"/>
-
-          </TouchableHighlight>
         <View style={styles.container}>
             <BackgroundImage>
                
@@ -71,23 +49,105 @@ static navigationOptions = {
                    </Image>
 
                    </Text>
-                   
-                <TouchableHighlight
-                    style={styles.btn}
-                    onPress={() => navigate('Sign')}>
 
-                    <Text style={styles.btnText}>Get Started!</Text>
-                </TouchableHighlight>
+
+
+
+                   <Button style={styles.btn}>
+                    <Icon name='create' />
+                    <Text onPress={() => navigate('Sign')}>Sign Up!</Text>
+                    </Button>  
+
+
                 <Text style={styles.text2}>Have an account?</Text>
                 <Text style={styles.text3}>Login here.</Text>
             </BackgroundImage>     
-      </View>
-
-      </Drawer>
+      </View>  
         )
     }
 }
 
+
+
+
+        // <TouchableHighlight style={styles.menu}  onPress={()=> this.openDrawer()}>
+        //  <Icon name= "menu"/>
+
+        //   </TouchableHighlight>
+
+
+
+// <TouchableHighlight
+//                     style={styles.btn}
+//                     onPress={() => navigate(SimpleApp.Sign)}>
+//                     <Text style={styles.btnText}>Get Started!</Text>
+//                 </TouchableHighlight>
+
+
+
+
+class MapScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Search Map',
+  };
+  render() {
+    return (
+      <View>
+        <Text>Search the map.</Text>
+      </View>
+    );
+  }
+}
+
+class ProfileScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Profile Page',
+  };
+  render() {
+    return (
+      <View>
+        <Text>View your profile</Text>
+      </View>
+    );
+  }
+}
+
+
+class SignUp extends React.Component {
+  static navigationOptions = {
+    title: 'Sign Up',
+  };
+  render() {
+    return (
+      <View>
+        <Text>Sign Up!</Text>
+      </View>
+    );
+  }
+}
+
+class SignOut extends React.Component {
+  static navigationOptions = {
+    title: 'Sign Out',
+  };
+  render() {
+    return (
+      <View>
+        <Text>Sign Out</Text>
+      </View>
+    );
+  }
+}
+
+
+const SimpleApp2 = StackNavigator({
+
+  Home: { screen: Home }, 
+  Sign: { screen: Auth },
+  Prof: { screen: Profile},
+  Map: { screen: MapSearch},
+});
+export default SimpleApp2;
 
 const styles = StyleSheet.create({
     drawer:{
@@ -115,7 +175,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        paddingTop: 20,
+        marginTop: 5,
     },
     heading: {
         color: '#ccc',
@@ -125,7 +185,7 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         width: null,
-        height: null,
+        height: 400,
         resizeMode: 'cover',
         justifyContent: 'center',
         alignItems: 'center',
