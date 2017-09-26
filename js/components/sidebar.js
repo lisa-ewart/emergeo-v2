@@ -119,7 +119,8 @@ const styles = StyleSheet.create({
 btntext:{
 color: 'green',
 textAlign: 'left',
-}
+},
+
 })
 
 
@@ -127,15 +128,3 @@ textAlign: 'left',
 
 
 
-// <Button full light>
-//         <Icon name='chatbubbles' />
-//           <Text onPress={() => navigate('Chat')}>Chat with Providers</Text>
-//         </Button>
-//         <Button full light>
-//         <Icon name='search' />
-//         <Text onPress={() => navigate('Map')}>Search Map</Text>
-//         </Button>
-//         <Button full light>
-//         <Icon name='person' />
-//         <Text onPress={() => navigate('Profile')}>Profile Page</Text>
-//         </Button>

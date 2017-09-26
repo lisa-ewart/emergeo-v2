@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label, Button } from 'native-base';
 import Auth from '../firebase/auth';
-import Home from './home';
+import Home from './deleteme';
 import DrawerExample from './drawer';
 import {
   StackNavigator,
