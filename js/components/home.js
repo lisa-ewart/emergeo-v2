@@ -7,8 +7,11 @@ import {
     Image, Container,
     // BackgroundImage
 } from 'react-native';
+
 import {Drawer, Icon, Button,} from 'native-base';
 import { StackNavigator } from 'react-navigation';
+
+
 import SideBar from './sidebar';
 import Auth from '../firebase/auth';
 import Profile from './profile';
@@ -27,9 +30,6 @@ class BackgroundImage extends Component {
         )
     }
 }
-
-
-
 
 
 
@@ -58,8 +58,7 @@ class Home extends Component{
                     <Text onPress={() => navigate('Sign')}>Sign Up!</Text>
                     </Button>  
 
-                   
-                
+
                 <Text style={styles.text2}>Have an account?</Text>
                 <Text style={styles.text3}>Login here.</Text>
             </BackgroundImage>     
@@ -67,6 +66,7 @@ class Home extends Component{
         )
     }
 }
+
 
 
 
@@ -148,11 +148,6 @@ const SimpleApp2 = StackNavigator({
   Map: { screen: MapSearch},
 });
 export default SimpleApp2;
-
-
-
-
-
 
 const styles = StyleSheet.create({
     drawer:{

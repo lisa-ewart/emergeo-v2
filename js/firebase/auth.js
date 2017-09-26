@@ -37,6 +37,9 @@ export default class Auth extends Component{
     }
 
 
+
+
+
     render(){
         return(
             <Container>
@@ -55,11 +58,21 @@ export default class Auth extends Component{
                         <Button style={styles.signin} block onPress={()=> this.createUser()}>
                             <Text style={styles.btntext}>Sign In</Text>
                         </Button>
+
                     </Form>
+                    <Button style={styles.signin} block onPress={() => this.changeView()}>
+                        <Text style={styles.btntext}>Go Back</Text>
+                    </Button>
                     </Card>
                 </Content>
             </Container>
         )
+    }
+
+    changeView() {
+        this.props.dispatch('SWITCH_VIEW', {
+            viewNumber: 1
+        })
     }
     
     //THIS FUNCTION WILL CREATE A USER ACCOUNT AND SIGN THEM IN
