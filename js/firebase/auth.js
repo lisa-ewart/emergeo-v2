@@ -146,10 +146,10 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     signin:{
-        backgroundColor:'black',
+        backgroundColor:'white',
     },
     btntext:{
-        color:'white',
+        color:'#9DBFC8',
     },
 });
 

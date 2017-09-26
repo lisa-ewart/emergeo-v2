@@ -7,11 +7,8 @@ import {
     Image, Container,
     // BackgroundImage
 } from 'react-native';
-
 import {Drawer, Icon, Button,} from 'native-base';
 import { StackNavigator } from 'react-navigation';
-
-
 import SideBar from './sidebar';
 import Auth from '../firebase/auth';
 
@@ -27,7 +24,6 @@ class BackgroundImage extends Component {
         )
     }
 }
-
 export default class Home extends Component{
 
 static navigationOptions = {
@@ -39,20 +35,13 @@ static navigationOptions = {
       this.drawer._root.close()
     };
     openDrawer = () => {
-        this.drawer._root.open()
-    };
+      this.drawer._root.open()
+       };
 
-    changeView(){
-        this.props.dispatch('SWITCH_VIEW',{
-            viewNumber: 2
-        })
-    }
-    
-    render(){      
+    render(){
+       
         return(
       <Drawer
-
-
         ref={(ref) => { this.drawer = ref; }}
         content={<SideBar navigator={this.navigator}{...this.props}/>}
         
@@ -75,7 +64,6 @@ static navigationOptions = {
                 <TouchableHighlight
                     style={styles.btn}
                     onPress={() => navigate('Sign')}>
-
                     <Text style={styles.btnText}>Get Started!</Text>
                 </TouchableHighlight>
                 <Text style={styles.text2}>Have an account?</Text>
@@ -87,6 +75,14 @@ static navigationOptions = {
         )
     }
 }
+
+
+
+
+
+
+
+
 
 
 const styles = StyleSheet.create({

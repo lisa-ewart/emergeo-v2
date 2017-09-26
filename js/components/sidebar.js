@@ -1,44 +1,130 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image } from 'react-native';
+
+
 import {
-Icon,
-Button,
-Container,
-Content,
-} from 'native-base';
-export default class Sidebar extends Component{
+  AppRegistry,
+  Text, View, StyleSheet, Image,
+} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { Container, Header, Content, Icon, Button, } from 'native-base';
 
-render(){
-return(
-<Container>
+import Auth from '../firebase/auth';
+import Profile from './profile';
+import MapSearch from './map';
 
-<Content style ={{marginTop: 100}}>
-<Button iconLeft large block light style = {{marginBottom: 20}}>
-<Icon name='person' />
-<Text>Account</Text>
-</Button>
-<Button iconLeft large block light style = {{marginBottom: 20}}>
-<Icon name='settings' />
-<Text>Settings</Text>
-</Button>
-<Button iconLeft large block light style = {{marginBottom: 20}}>
-<Icon name='chatbubbles' />
-<Text>Inbox</Text>
-</Button>
-<Button iconLeft large block light style = {{marginBottom: 20}}>
-<Icon name='paper-plane' />
-<Text>Contact Us</Text>
-</Button>
-</Content>
-</Container>
-)
+
+class SideBar extends React.Component {
+  static navigationOptions = {
+    title: 'Emergeo',
+  };
+
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      <View>
+        <Text style={styles.btntext}>Get the screens out of the drawer!</Text>
+
+        <Button full light>
+        <Icon name='create' />
+        <Text onPress={() => navigate('Sign')}>Sign Up!</Text>
+        </Button>  
+
+        <Button full light>
+        <Icon name='person' />
+        <Text onPress={() => navigate('Prof')}>My Profile</Text>
+        </Button> 
+
+         <Button full light>
+        <Icon name='search' />
+        <Text onPress={() => navigate('Map')}>Search for providers</Text>
+        </Button> 
+
+      </View>
+    );
+  }
 }
+
+
+
+
+
+
+class MapScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Search Map',
+  };
+  render() {
+    return (
+      <View>
+        <Text>Search the map.</Text>
+      </View>
+    );
+  }
 }
+
+class ProfileScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Profile Page',
+  };
+  render() {
+    return (
+      <View>
+        <Text>View your profile</Text>
+      </View>
+    );
+  }
+}
+
+
+class SignUp extends React.Component {
+  static navigationOptions = {
+    title: 'Sign Up',
+  };
+  render() {
+    return (
+      <View>
+        <Text>Sign Up!</Text>
+      </View>
+    );
+  }
+}
+
+class SignOut extends React.Component {
+  static navigationOptions = {
+    title: 'Sign Out',
+  };
+  render() {
+    return (
+      <View>
+        <Text>Sign Out</Text>
+      </View>
+    );
+  }
+}
+
+
+
+
+const SimpleApp = StackNavigator({
+  Home: { screen: SideBar }, 
+  Sign: { screen: Auth },
+  Prof: { screen: Profile},
+  Map: { screen: MapSearch},
+});
+export default SimpleApp;
+
+
 
 const styles = StyleSheet.create({
-image:{
-width: 350,
-height: 100,
-}
+btntext:{
+color: 'green',
+textAlign: 'left',
+},
+
 })
+
+
+
+
+
 
