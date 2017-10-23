@@ -145,7 +145,6 @@ toggleSignIn(){
         }
 
         auth.signInWithEmailAndPassword(email, password)
-        .then(res => navigate('Map'))
         .catch(() => auth.createUserWithEmailAndPassword(email, password))
             .then(res => navigate('Prof')).catch(error =>{
                 alert('Some Error!')
@@ -178,61 +177,6 @@ const styles = StyleSheet.create({
     },
 });
 
-
-
-
-class MapScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Search Map',
-  };
-  render() {
-    return (
-      <View>
-        <Text>Search the map.</Text>
-      </View>
-    );
-  }
-}
-
-class ProfileScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Profile Page',
-  };
-  render() {
-    return (
-      <View>
-        <Text>View your profile</Text>
-      </View>
-    );
-  }
-}
-
-
-class SignUp extends React.Component {
-  static navigationOptions = {
-    title: 'Sign Up',
-  };
-  render() {
-    return (
-      <View>
-        <Text>Sign Up!</Text>
-      </View>
-    );
-  }
-}
-
-class SignOut extends React.Component {
-  static navigationOptions = {
-    title: 'Sign Out',
-  };
-  render() {
-    return (
-      <View>
-        <Text>Sign Out</Text>
-      </View>
-    );
-  }
-}
 
 
 export const SimpleApp2 = StackNavigator({
